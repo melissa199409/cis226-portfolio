@@ -1,0 +1,16 @@
+>Driftwood Books</h1>" > /srv/driftwood/site/index.html\necho "db_login=placeholder-only" > /srv/driftwood/private/credentials.txt\necho "<h1>Driftwood inventory - staff only</h1>" > /srv/driftwood/admin/index.html\n\nsudo chgrp -R otterstaff /srv/driftwood\nchmod -R o-rwx /srv/driftwood\nchmod 600 /srv/driftwood/private/credentials.txt\n\ncd /srv && tar -czf $HOME/driftwood_backup.tar.gz driftwood/site\ncd ~\n\nIP=$(hostname -I | cut -d' ' -f1)    2  sudo apt update && sudo apt install -y openssh-server openssh-client\nsudo mkdir -p /run/sshd\nsudo /usr/sbin/sshd -p 2222 -o ListenAddress=127.0.0.1 -o PasswordAuthentication=no -o PidFile=/tmp/sshd2222.pid\nsudo ss -tlnp | grep 2222
+    3  ssh-keygen -t ed25519 -f ~/.ssh/driftwood_key -N "" -C "intern-practice-key"
+    4  ls -l ~/.ssh\ncat ~/.ssh/driftwood_key.pub
+    5  sudo -u intern mkdir -m 700 /home/intern/.ssh\n\ncat ~/.ssh/driftwood_key.pub | sudo -u intern tee /home/intern/.ssh/authorized_keys > /dev/null\n\nsudo -u intern chmod 600 /home/intern/.ssh/authorized_keys\n\nsudo ls -l /home/intern/.ssh
+    6  ssh -p 2222 -i ~/.ssh/driftwood_key intern@localhost "whoami; id; ls /srv/driftwood/site; cat /srv/driftwood/private/credentials.txt"
+    7  chmod 644 ~/.ssh/driftwood_key    9  chmod 600 ~/.ssh/driftwood_key
+   10  ssh -p 2222 -i ~/.ssh/driftwood_key intern@localhost "echo hello"   11  scp -P 2222 -i ~/.ssh/driftwood_key ~/driftwood_backup.tar.gz intern@localhost:
+   12  scp -P 2222 -i ~/.ssh/driftwood_key intern@localhost:driftwood_backup.tar.gz ~/roundtrip.tar.gz   13  cmp ~/driftwood_backup.tar.gz ~/roundtrip.tar.gz && echo "Identical - transfer verified"
+   14  python3 -m http.server 8080 --directory /srv/driftwood/admin --bind 127.0.0.1 > ~/dashboard.log 2>&1 &\nsleep 1\ncurl -sS --max-time 5 http://$IP:8080
+   15  ssh -f -N -L 9090:127.0.0.1:8080 -p 2222 -i ~/.ssh/driftwood_key intern@localhost
+   16  sleep 1\ncurl -s http://localhost:9090   17  pkill -f "9090:127.0.0.1:8080"   18  curl -sS --max-time 5 http://localhost:9090   19  cd ~\n\n{\n echo "=== 1. Keys ==="\n ls -l ~/.ssh/driftwood_key ~/.ssh/driftwood_key.pub\n echo\n\n echo "=== 2. Server side ==="\n sudo ls -l /home/intern/.ssh/authorized_keys\n sudo ss -tlnp | grep 2222\n echo\n\n echo "=== 3. Login as intern ==="\n ssh -p 2222 -i ~/.ssh/driftwood_key intern@localhost "id"\n echo\n\n echo "=== 4. Copy ==="\n cmp ~/driftwood_backup.tar.gz ~/roundtrip.tar.gz && echo "Identical - transfer verified"\n} | tee remote_summary.txt
+   20  cat ~/remote_summary.txt
+   22  cat evidence.txt   23  cat >> ~/.ssh/config <<'EOF'\nHost driftwood\n    HostName localhost\n    Port 2222\n    User intern\n    IdentityFile ~/.ssh/driftwood_key\n    StrictHostKeyChecking accept-new\nEOF\n\nchmod 600 ~/.ssh/config
+   24  ssh driftwood "whoami"
+   25  scp driftwood:driftwood_backup.tar.gz ~/shortcut.tar.gz
+   26  cmp ~/driftwood_backup.tar.gz ~/shortcut.tar.gz && echo "Shortcut works"

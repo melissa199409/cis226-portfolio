@@ -1,0 +1,13 @@
+=== 1. Network: who am I ===
+lo UNKNOWN 127.0.0.1/8 ::1/128
+eth0@if341259 UP 172.61.1.238/16
+default via 172.61.0.1 dev eth0
+
+=== 2. Reachability ===
+2 packets transmitted, 0 received, 100% packet loss, time 1058ms
+
+=== 3. Ports ===
+LISTEN 0 5 0.0.0.0:8000 0.0.0.0:*
+
+=== 4. Web status ===
+HTTP/1.0 200 OK
