@@ -1,0 +1,7 @@
+    1  awk -F, 'NR>1 {t[$5] += $3*$4} END {for (c in t) printf "%s $%.2f\n", c, t[c]}' sales.csv | sort
+    2  cd /workspaces/cis226-portfolio/week10-text-tools
+    3  awk -F, 'NR>1 {t[$5] += $3*$4} END {for (c in t) printf "%s $%.2f\n", c, t[c]}' sales.csv | sort
+    4  cd /workspaces/cis226-portfolio/week10-text-tools
+    5  { echo "=== 1. Config ==="; grep -E "^(bind|debug|admin_page)" driftwood.conf; echo;  echo "=== 2. Site ==="; echo "Pages with the OLD phone:"; grep -l 555-0142 site/*.html | wc -l; echo "Pages with the NEW phone:"; grep -l 555-0199 site/*.html | wc -l; echo;  echo "=== 3. Sales ==="; awk -F, 'NR>1 {t+=$3*$4} END {printf "Revenue: $%.2f\n", t}' sales.csv; echo;  echo "=== 4. Users ==="; awk -F: '{print $7}' /etc/passwd | sort | uniq -c | sort -rn | head -3; echo;  echo "=== 5. Shelf ==="; cat -n shelf.txt; echo; } | tee week10_summary.txt
+    6  vim ../README.md
+    7  history > history-week10.txt
