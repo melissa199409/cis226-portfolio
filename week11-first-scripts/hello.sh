@@ -1,5 +1,5 @@
 
-i
+
 #!/bin/bash
 #hello.sh - my first script
 echo "Hello from Driftwood Books."
