@@ -1,0 +1,15 @@
+    1  ./opening-report.sh
+    2  vim opening-report.sh
+    3  ./opening-report.sh
+    4  vim opening-report.sh
+    5  ./opening-report.sh
+    6  ./opening-report.sh sales-week2.csv
+    7  ./opening-report.sh no-such-file.csv
+    8  git add .
+    9  git commit -m "Add opening-report.sh with online revenue"
+   10  git push
+   11  cd /workspaces/cis226-portfolio/week11-first-scripts
+   12  {   echo "== Scripts =="; ls -l *.sh;   echo "== Default file =="; echo "Sam" | ./opening-report.sh;   echo "== Week 2 file =="; echo "Sam" | ./opening-report.sh sales-week2.csv; } | tee week11_summary.txt
+   13  vim ../README.md
+   14  cd /workspaces/cis226-portfolio
+   15  history > history-week11.txt

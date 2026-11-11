@@ -1,0 +1,4 @@
+== Scripts ==
+-rwxrwxrwx 1 codespace codespace 139 Nov 10 23:59 hello.sh
+== Default file ==
+== Week 2 file ==
