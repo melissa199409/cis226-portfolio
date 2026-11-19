@@ -1,0 +1,34 @@
+== Scripts ==
+-rwxrwxrwx 1 codespace codespace 524 Nov 19 00:23 channel-note.sh
+-rwxrwxrwx 1 codespace codespace 345 Nov 19 00:25 confirm.sh
+-rwxrwxrwx 1 codespace codespace 179 Nov 19 00:05 file-check.sh
+-rwxrwxrwx 1 codespace codespace 934 Nov 19 00:47 opening-report.sh
+-rwxrwxrwx 1 codespace codespace 178 Nov 19 00:40 safe-demo.sh
+-rwxrwxrwx 1 codespace codespace 287 Nov 19 00:07 stock-check.sh
+== Good file ==
+=== Driftwood Books: Morning Report ===
+Good morning, Sam. Today is Thursday.
+Reading: sales.csv
+Sales: 6
+Books: 22
+Revenue: $246.23
+Online Revenue: $123.75
+exit code: 0
+== Week 2 file ==
+=== Driftwood Books: Morning Report ===
+Good morning, Sam. Today is Thursday.
+Reading: sales-week2.csv
+Sales: 3
+Books: 12
+Revenue: $126.21
+Online Revenue: $48.75
+exit code: 0
+== Missing file ==
+Who is opening the shop? Error: I can't find the file 'no-such-file.csv'.
+exit code: 1
+== No sales ==
+Who is opening the shop? Error: 'header-only.csv' has no sales in it.
+exit code: 2
+== Channel note ==
+Pack it, print the label, and drop it at the post office.
+exit code: 0

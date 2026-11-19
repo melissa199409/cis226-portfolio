@@ -1,0 +1,142 @@
+    1  vim file-check.sh
+    2  chmod +x file-check.sh
+    3  cd /workspaces/cis226-portfolio/week12-decisions
+    4  vim file-check.sh
+    5  chmod +x file-check.sh
+    6  ls
+    7  ./file-check.sh sales.csv
+    8  File exists.
+    9  echo $?
+   10  ./file-check.sh sales.csv
+   11  echo $?
+   12  ./file-check.sh missing.csv
+   13  echo $?
+   14  vim stock-check.sh
+   15  chmod +x stock-check.sh
+   16  ./stock-check.sh 10 5
+   17  echo $?
+   18  ./stock-check.sh 3 5
+   19  echo $?
+   20  ./stock-check.sh 10 5
+   21  echo $?
+   22  cd /workspaces/cis226-portfolio
+   23  git add week12-decisions/
+   24  git commit -m "Add file and stock checking scripts"
+   25  git push
+   26  cd /workspaces/cis226-portfolio/week12-decisions
+   27  [[ -f sales.csv ]]
+   28  echo $?
+   29  [[ -f no-such-file.csv ]]
+   30  echo $?
+   31  touch empty.csv
+   32  [[ -s empty.csv ]]
+   33  echo $?
+   34  [[ -s sales.csv ]]
+   35  echo $?
+   36  vim file-check.sh
+   37  chmod +x file-check.sh
+   38  ./file-check.sh
+   39  ./file-check.sh sales-week2.csv
+   40  ./file-check.sh no-such-file.csv
+   41  echo $?
+   42  ./file-check.sh
+   43  ./file-check.sh sales-week2.csv
+   44  vim file-check.sh
+   45  chmod +x file-check.sh
+   46  ./file-check.sh
+   47  ./file-check.sh sales-week2.csv
+   48  ./file-check.sh no-such-file.csv
+   49  echo $?
+   50  cat -n file-check.sh
+   51  vim file-check.sh
+   52  ./file-check.sh
+   53  ./file-check.sh sales-week2.csv
+   54  ./file-check.sh no-such-file.csv
+   55  echo $?
+   56  vim stock-check.sh
+   57  chmod +x stock-check.sh
+   58  ./stock-check.sh 0
+   59  ./stock-check.sh 3
+   60  ./stock-check.sh 12
+   61  git status
+   62  cat -n ../file-check.sh
+   63  ls -l empty.csv
+   64  git diff -- file-check.sh stock-check.sh
+   65  cat -n ../file-check.sh
+   66  git diff -- stock-check.sh
+   67  /workspaces/cis226-portfolio/week12-decisions
+   68  vim channel-note.sh
+   69  chmod +x channel-note.sh
+   70  ./channel-note.sh online
+   71  ./channel-note.sh shop
+   72  ./channel-note.sh market
+   73  ./channel-note.sh pigeon
+   74  echo $?
+   75  ./channel-note.sh
+   76  echo $?
+   77  vim confirm.sh
+   78  touch scratch.txt
+   79  chmod +x confirm.sh
+   80  touch scratch.txt
+   81  chmod +x confirm.sh
+   82  ./confirm.sh
+   83  ls scratch.txt
+   84  ./confirm.sh
+   85  ls scratch.txt
+   86  ./confirm.sh
+   87  ls scratch.txt
+   88  git status
+   89  cat -n ../file-check.sh
+   90  git diff -- stock-check.sh
+   91  git add file-check.sh stock-check.sh channel-note.sh confirm.sh empty.csv
+   92  git commit -m "Complete Week 12 shell scripting exercises"
+   93  git push
+   94  git status
+   95  cp sales.csv sales.bak && echo "Backup worked."
+   96  cp no-such-file.csv oops.bak && echo "Backup worked."
+   97  cp no-such-file.csv oops.bak || echo "Backup FAILED. Do not delete anything!"
+   98  cp no-such-file.csv oops.bak ; echo "Now deleting the originals..."
+   99  cp no-such-file.csv oops.bak && echo "Now deleting the originals..."
+  100  rm -f sales.bak
+  101  vim safe-demo.sh
+  102  chmod +x safe-demo.sh
+  103  ./safe-demo.sh
+  104  sed -i '1a set -e' safe-demo.sh
+  105  head -3 safe-demo.sh
+  106  ./safe-demo.sh
+  107  echo $?
+  108  backup_dir=""
+  109  echo "Would delete: $backup_dir/*"
+  110  bash -c 'echo "Hello, $nmae"'
+  111  bash -c 'set -u; echo "Hello, $nmae"'
+  112  bash -c 'false | true; echo "Without pipefail: $?"'
+  113  bash -c 'set -o pipefail; false | true; echo "With pipefail: $?"'
+  114  git status --short
+  115  git add safe-demo.sh
+  116  git commit -m "Add safe-demo.sh before upgrading the report"
+  117  sed -i '1a set -euo pipefail' opening-report.sh
+  118  head -3 opening-report.sh
+  119  vim opening-report.sh
+  120  sed -n '1,45p' opening-report.sh
+  121  vim opening-report.sh
+  122  sed -n '1,30p' opening-report.sh
+  123  sales=$(awk -F, 'NR>1' "$sales_file" | wc -l)
+  124  ./opening-report.sh
+  125  ./opening-report.sh missing.csv
+  126  touch empty.csv
+  127  ./opening-report.sh empty.csv
+  128  ls
+  129  cat stock-check.sh
+  130  ./stock-check.sh 0
+  131  ./stock-check.sh 3
+  132  ./stock-check.sh 10
+  133  cat confirm.sh
+  134  ./confirm.sh
+  135  cat safe-demo.sh
+  136  /workspaces/cis226-portfolio/week12-decisions
+  137  cd /workspaces/cis226-portfolio/week12-decisions
+  138  head -n 1 sales.csv > header-only.csv
+  139  {   echo "== Scripts =="; ls -l *.sh;    echo "== Good file ==";    echo "Sam" | ./opening-report.sh; echo "exit code: $?";    echo "== Week 2 file ==";    echo "Sam" | ./opening-report.sh sales-week2.csv; echo "exit code: $?";    echo "== Missing file ==";    ./opening-report.sh no-such-file.csv 2>&1; echo "exit code: $?";    echo "== No sales ==";    ./opening-report.sh header-only.csv 2>&1; echo "exit code: $?";    echo "== Channel note ==";    ./channel-note.sh online; echo "exit code: $?";  } | tee week12_summary.txt
+  140  cat week12_summary.txt
+  141  vim ../README.md
+  142  history > history-week12.txt

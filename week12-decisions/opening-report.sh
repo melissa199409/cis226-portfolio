@@ -1,9 +1,17 @@
 #!/bin/bash
+set -euo pipefail
 # opening-report.sh - Driftwood Books morning report
 # Usage: ./opening-report.sh [sales-file]
 # Author: Cecilia
 sales_file="${1:-sales.csv}"
 read -r -p "Who is opening the shop? " opener
+if [[ ! -f "$sales_file" ]]; then
+  echo "Error: I can't find the file '$sales_file'." >&2
+  exit 1
+elif [[ $(wc -l < "$sales_file") -lt 2 ]]; then
+  echo "Error: '$sales_file' has no sales in it." >&2
+  exit 2
+fi
 sales=$(awk -F, 'NR>1' "$sales_file" | wc -l)
 books=$(awk -F, 'NR>1 {b+=$3} END {print b}' "$sales_file")
 revenue=$(awk -F, 'NR>1 {t+=$3*$4} END {printf "%.2f", t}' "$sales_file")
