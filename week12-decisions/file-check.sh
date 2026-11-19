@@ -1,8 +1,11 @@
 #!/bin/bash
-if [ -f "$1" ]; then
-	echo "File exists."
-	exit 0
+
+file="${1:-sales.csv}"
+
+if [[ -f "$file" ]]; then
+    lines=$(wc -l < "$file")
+    echo "Found $file ($lines lines)."
 else
-	echo "Error: File not found."
-	exit 1 
+    echo "Can't find $file."
+    exit 1
 fi
