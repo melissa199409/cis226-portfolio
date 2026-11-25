@@ -1,0 +1,33 @@
+== Scripts ==
+-rwxrwxrwx 1 codespace codespace  316 Nov 25 00:14 ask-channel.sh
+-rwxrwxrwx 1 codespace codespace  524 Nov 25 00:02 channel-note.sh
+-rwxrwxrwx 1 codespace codespace 1190 Nov 25 02:00 opening-report.sh
+-rwxrwxrwx 1 codespace codespace  215 Nov 25 00:38 packing-notes.sh
+-rwxrwxrwx 1 codespace codespace 1054 Nov 25 02:10 report-all.sh
+-rwxrwxrwx 1 codespace codespace  262 Nov 25 02:31 tally.sh
+== Report on every file ==
+report-all: FAIL empty.csv - exit code 2
+report-all: FAIL header-only.csv - exit code 2
+report-all: OK  sales-week1.csv - Mood: Busy week
+report-all: OK  sales-week2.csv - Mood: Steady week
+report-all: OK  sales-week3.csv - Mood: Steady week
+report-all: OK  sales-week4.csv - Mood: Quiet week
+report-all: Done: 4 good, 2 bad, out of 6 files.
+exit code: 3
+== Missing folder ==
+Error: 'no-such-folder' is not a folder.
+exit code: 1
+== Fixed tally ==
+sales-week1.csv: 22 books
+sales-week2.csv: 12 books
+sales-week3.csv: 14 books
+sales-week4.csv: 3 books
+Total books: 51
+exit code: 0
+== Packing notes ==
+== online ==
+Pack it, print the label, and drop it at the post office.
+== shop ==
+Ring it up at the counter and offer a bag.
+== market ==
+Take cash or card at the stall, and keep the receipt.

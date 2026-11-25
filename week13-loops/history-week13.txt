@@ -1,0 +1,7 @@
+    1  cd /workspaces/cis226-portfolio/week13-loops
+    2  {   echo "== Scripts =="; ls -l *.sh;    echo "== Report on every file ==";    ./report-all.sh 2>&1; echo "exit code: $?";    echo "== Missing folder ==";    ./report-all.sh no-such-folder 2>&1; echo "exit code: $?";    echo "== Fixed tally ==";    ./tally.sh; echo "exit code: $?";    echo "== Packing notes ==";    ./packing-notes.sh;  } | tee week13_summary.txt
+    3  {   echo "== Scripts =="; ls -l *.sh;    echo "== Report on every file ==";   ./report-all.sh 2>&1; echo "exit code: $?";    echo "== Missing folder ==";   ./report-all.sh no-such-folder 2>&1; echo "exit code: $?";    echo "== Fixed tally ==";   ./tally.sh; echo "exit code: $?";    echo "== Packing notes ==";   ./packing-notes.sh; } | tee week13_summary.txt
+    4  ls -l week13_summary*
+    5  vim ../README.md
+    6  tail -3 ../README.md
+    7  history > history-week13.txt
