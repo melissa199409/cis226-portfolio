@@ -1,0 +1,3 @@
+First choice: Disk space watchdog
+Backup idea: Backup with a heartbeat
+Why: I want to know when my disk is running out of space so I can fix the problem before it affects my work.
