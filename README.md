@@ -7,3 +7,4 @@
 - week11-first-scripts: my first Bash scripts
 - week12-decisions: scripts that make decisions
 - week13-loops: scripts that repeat, reuse, and report
+- week14-capstone-plan: my Capstone plan, written before the code

@@ -1,0 +1,33 @@
+== Scripts ==
+-rwxrwxrwx 1 codespace codespace 1326 Nov 28 19:25 check-plan.sh
+-rwxrwxrwx 1 codespace codespace  282 Nov 28 18:39 spike.sh
+== Plan check ==
+check-plan: OK Problem - 42 words
+check-plan: OK What it does - 51 words
+check-plan: OK How it works - 36 words
+check-plan: OK What can go wrong - 49 words
+check-plan: OK How I will test it - 49 words
+check-plan: OK Week 15 schedule - 71 words
+check-plan: Done: 6 of 6 sections OK, 329 words.
+exit code: 0
+== Starter template ==
+check-plan: MISSING Problem - 0 words, need at least 10
+check-plan: MISSING What it does - 0 words, need at least 10
+check-plan: MISSING How it works - 0 words, need at least 10
+check-plan: MISSING What can go wrong - 0 words, need at least 10
+check-plan: MISSING How I will test it - 0 words, need at least 10
+check-plan: MISSING Week 15 schedule - 0 words, need at least 10
+check-plan: Done: 0 of 6 sections OK, 28 words.
+exit code: 3
+== Missing file ==
+Error: 'no-such-plan.md' is not a file.
+exit code: 1
+== Empty file ==
+Error: 'blank.md' is empty.
+exit code: 2
+== Spike output ==
+Oldest two backup archives:
+testdata/test-2.tar.gz
+testdata/test-1.tar.gz
+== Plan size ==
+329 PLAN.md

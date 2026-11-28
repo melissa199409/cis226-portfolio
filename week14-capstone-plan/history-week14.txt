@@ -1,0 +1,85 @@
+    1  cd /workspaces/cis226-portfolio
+    2  git pull
+    3  mkdir -p week14-capstone-plan
+    4  cd week14-capstone-plan
+    5  wc -l ../week13-loops/report-all.sh
+    6  vim choice.txt
+    7  cat choice.txt
+    8  git add .
+    9  git commit -m "Choose my Capstone project"
+   10  pwd
+   11  mkdir -p testdata
+   12  chmod +x spike.sh
+   13  ./spike.sh 2>&1 | tee spike-output.txt
+   14  git add spike.sh spike-output.txt
+   15  git commit -m "Add spike for the riskiest step"
+   16  vim spike.sh
+   17  chmod +x spike.sh
+   18  ./spike.sh 2>&1 | tee spike-output.txt
+   19  git add spike.sh spike-output.txt
+   20  git commit -m "Add spike for the riskiest step"
+   21  git push
+   22  pwd
+   23  cat > PLAN.md <<'EOF'
+# Capstone Plan
+
+## Problem
+
+## What it does
+
+## How it works
+
+## What can go wrong
+
+## How I will test it
+
+## Week 15 schedule
+
+EOF
+
+   24  cp PLAN.md PLAN-starter.md
+   25  ls
+   26  vim check-plan.sh
+   27  chmod +x check-plan.sh
+   28  ./check-plan.sh --help
+   29  nl -ba check-plan.sh
+   30  vim check-plan.sh
+   31  chmod +x check-plan.sh
+   32  ./check-plan.sh --help
+   33  vim check-plan.sh
+   34  ./check-plan.sh --help
+   35  ./check-plan.sh
+   36  vim check-plan.sh:11
+   37  vim check-plan.sh
+   38  ./check-plan.sh
+   39  echo $?
+   40  ./check-plan.sh no-such-plan.md
+   41  echo $?
+   42  touch blank.md
+   43  ./check-plan.sh blank.md
+   44  echo $?
+   45  rm blank.md
+   46  git add check-plan.sh PLAN.md PLAN-starter.md
+   47  git commit -m "Add check-plan.sh and the plan starter"
+   48  git status
+   49  git ls-files check-plan.sh
+   50  git push
+   51  vim PLAN.md
+   52  ./check-plan.sh
+   53  vim PLAN.md
+   54  cat -n PLAN.md
+   55  vim PLAN.md
+   56  ./check-plan.sh
+   57  git add PLAN.md
+   58  git commit -m "Write the Capstone plan"
+   59  git push
+   60  cd /workspaces/cis226-portfolio/week14-capstone-plan
+   61  pwd
+   62  /week14-capstone-plan
+   63  rm -r testdata
+   64  ls
+   65  { echo "== Scripts =="; ls -l *.sh;  echo "== Plan check =="; ./check-plan.sh 2>&1; echo "exit code: $?";  echo "== Starter template =="; ./check-plan.sh PLAN-starter.md 2>&1; echo "exit code: $?";  echo "== Missing file =="; ./check-plan.sh no-such-plan.md 2>&1; echo "exit code: $?";  echo "== Empty file =="; touch blank.md; ./check-plan.sh blank.md 2>&1; echo "exit code: $?"; rm blank.md;  echo "== Spike output =="; cat spike-output.txt;  echo "== Plan size =="; wc -w PLAN.md;  } | tee week14_summary.txt
+   66  cat week14_summary.txt
+   67  vim ../README.md
+   68  tail -n 5 ../README.md
+   69  history > history-week14.txt
